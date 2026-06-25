@@ -6,7 +6,7 @@ Node*solve(Node*head){
         return NULL ;
     }
     auto it = head ;
-    auto tail = it->next ;
+    auto tail = it ;
 
    while(it){
     if(it->child){
