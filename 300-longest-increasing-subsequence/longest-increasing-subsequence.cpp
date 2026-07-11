@@ -38,6 +38,27 @@ public:
         dp[curr][prev+1] = finalAns ;
         return finalAns ;
   }
+  
+ //Method 2 : Bottom-Up approach 
+
+int solveUsingTabulation(vector<int>& arr) {
+    int n = arr.size() ;
+     vector<vector<int>>dp(n+1,vector<int>(n+1,0)) ;
+
+  for(int curr=n-1; curr>=0 ; curr--){
+    for(int prev = curr-1 ; prev>=-1 ; prev--){
+        int includeAns = 0;
+        if(prev==-1 || arr[curr]>arr[prev]){
+        includeAns = 1 + dp[curr+1][curr+1] ;
+    }
+        int excludeAns = 0 + dp[curr+1][prev+1] ;
+        dp[curr][prev+1] = max(includeAns,excludeAns) ;
+    }
+  } 
+   return dp[0][0] ;
+}
+
+
 
 
 
@@ -48,9 +69,12 @@ public:
        
        //2d DP
        // Methode 1
-       int n = nums.size() ;
-       vector<vector<int>>dp(n+1,vector<int>(n+1,-1)) ;
-       int ans = solveUsingMem(nums,curr,prev,dp) ;
+    //    int n = nums.size() ;
+    //    vector<vector<int>>dp(n+1,vector<int>(n+1,-1)) ;
+    //    int ans = solveUsingMem(nums,curr,prev,dp) ;
+
+      // Methode 2
+      int ans = solveUsingTabulation(nums) ;
         return ans ;
     }
 };
