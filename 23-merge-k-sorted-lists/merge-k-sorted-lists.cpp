@@ -1,44 +1,43 @@
- class compare{
-     public:
-     bool operator()(ListNode* a,ListNode* b){
-         return a->val > b->val ;          //CUSTOM MIN_HEAP Created
-     }
- }; 
+class compare{
+    public : 
+    bool operator()(ListNode*a,ListNode*b){
+        return a->val>b->val ;
+    }
+};
 
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-    priority_queue<ListNode* , vector<ListNode*> ,compare> pq ; //cUSTOM minheap created
+      priority_queue<ListNode* , vector<ListNode*> ,compare> pq ;
+      ListNode* head = NULL ;
+      ListNode* tail = NULL ;
 
-    ListNode* head = NULL ;
-    ListNode* tail = NULL ;
-
-    int totalRows = lists.size() ;
-
-    for(int row=0 ; row<totalRows ; row++){
+     int rowsize = lists.size() ;  
+  
+     for(int row=0 ; row<rowsize ; row++){
         ListNode* temp = lists[row] ;
         if(temp!=NULL){
-            pq.push(temp) ;
+           pq.push(temp) ;
         }
-    }
+     }
 
-    while(!pq.empty()){
-        ListNode* front = pq.top() ;
+     while(!pq.empty()){
+        ListNode* temp = pq.top() ;
         pq.pop() ;
 
-    if(head==NULL && tail==NULL){
-        head = front ;
-        tail = front ;
-    }
-    else{
-        tail->next = front ;
-        tail = front ;
-    }  
-
-       if(tail->next != NULL){
-        pq.push(tail->next) ;
+       if(head==NULL && tail==NULL){
+          head = temp ;
+          tail = temp ;
        }
-    } 
-        return head ;
+       else{
+        tail->next = temp ;
+        tail = temp ;
+       }
+        
+        if(tail->next!=NULL){
+            pq.push(tail->next) ;
+        }
+     }
+       return head ;
     }
 };
