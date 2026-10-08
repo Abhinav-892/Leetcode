@@ -24,11 +24,8 @@ public:
     }
         fast = fast->next ;
     } 
-      ListNode* temp = slow ;
       
       LastNode->next = NULL ;
-
-    
             return head ;
     }
 };
