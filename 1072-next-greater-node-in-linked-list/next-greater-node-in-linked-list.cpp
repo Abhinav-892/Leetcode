@@ -9,7 +9,7 @@ public:
         head = head->next ;
      }
 
-     vector<int> ans(ll.size()) ;
+     vector<int> ans(ll.size(),0) ;
      stack<int> st ;   
   
      for(int i=0 ; i<ll.size() ; i++){
