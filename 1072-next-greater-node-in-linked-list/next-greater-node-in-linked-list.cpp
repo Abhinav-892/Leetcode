@@ -15,9 +15,8 @@ public:
      for(int i=0 ; i<ll.size() ; i++){
     
      while(!st.empty() && ll[i]>ll[st.top()]){
-         int index = st.top() ;
-        st.pop() ;
-        ans[index] = ll[i] ;
+          ans[st.top()] = ll[i] ;
+          st.pop() ;
      }  
        st.push(i) ;  
     } 
