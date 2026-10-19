@@ -18,19 +18,18 @@ public:
 }
 
   void prevSmallest(vector<int>& heights,vector<int>& prevAns){
-    stack<int> st ;
-    st.push(-1) ;
-    int n = heights.size() ;
+   stack<int> st ;
+   st.push(-1) ;
 
-    for(int i=0 ; i<n ; i++){
-        int element = heights[i] ;
+  for(int i=0 ; i<heights.size() ; i++){
+    int element = heights[i] ;
 
-    while(st.top()!=-1 && heights[st.top()]>=element){    // vaha index insert kiya hai stack mein   
-        st.pop() ;                                        // not val.
-    }
-      prevAns.push_back(st.top()) ;
-      st.push(i) ;
-    }
+   while(st.top()!=-1 && heights[st.top()]>element){
+       st.pop() ;
+   }
+    prevAns.push_back(st.top()) ;
+    st.push(i) ;
+ }  
   } 
 
     int largestRectangleArea(vector<int>& heights) {
