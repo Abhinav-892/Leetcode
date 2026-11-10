@@ -13,19 +13,16 @@ void solve(vector<vector<int>> &ans,vector<int> &nums,TreeNode* root, int target
             ans.push_back(nums) ;
         }
     }
-
      solve(ans,nums,root->left,targetSum,sum) ;
      solve(ans,nums,root->right,targetSum,sum) ;
-          nums.pop_back() ;
+     nums.pop_back() ;
     }  
-
-
 
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
       int sum = 0 ;
       vector<vector<int>> ans ;
       vector<int> nums ;
       solve(ans,nums,root,targetSum,sum) ;         
-     return ans ;
+      return ans ;
     }
 };
